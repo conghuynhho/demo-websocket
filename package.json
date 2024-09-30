@@ -1,0 +1,14 @@
+{
+  "name": "root",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "yarn@1.22.21",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "predev": "yarn install",
+    "dev": "turbo run dev"
+  }
+}
