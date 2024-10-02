@@ -14,10 +14,18 @@ function App() {
 
   useDidMountEffect(() => {
     console.log('useDidMountEffect')
+
+    // check if support web socket
+    if (!window.WebSocket) {
+      alert('WebSocket is not supported in this browser.')
+      return
+    }
+
     const userId = window.location.search.split('=')[1]
     // url on browser will be like this: http://localhost:5173/?userId=1
-    ws = new ManagedWebSocket(`wss://1zcm21r0p4.execute-api.ap-northeast-1.amazonaws.com/development/?userId=${userId}`)
-    // ws = new ManagedWebSocket(`ws://localhost:3000/?userId=${userId}`)
+    // ws = new ManagedWebSocket(`wss://1zcm21r0p4.execute-api.ap-northeast-1.amazonaws.com/development/?userId=${userId}`)
+    // ws = new ManagedWebSocket(`ws://192.168.50.25:3000/?userId=${userId}`)
+    ws = new ManagedWebSocket(`ws://localhost:3000/?userId=${userId}`)
 
     ws.connect().then(() => {
       console.log('============ws connected===========')
@@ -74,6 +82,7 @@ function App() {
       ws.close()
     }
   }, [])
+
 
   const sendMessage = () => {
     if (input.trim()) {

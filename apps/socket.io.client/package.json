@@ -1,5 +1,5 @@
 {
-  "name": "demo-websocket",
+  "name": "client.socket.io",
   "private": true,
   "version": "0.0.0",
   "type": "module",
